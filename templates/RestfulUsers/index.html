@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Users Table</title>
+    <meta name="description" content="Contains Users Table">
+    <meta name="Chris" content="Index">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'RestfulUsers/css/mainStyleSheet.css' %}">
+
+</head>
+
+<body>
+	<div id="container">
+		
+		<table>
+			<tbody>
+				<tr>
+					<th>ID</th>
+					<th>Full Name</th>
+					<th>Email</th>
+					<th>Created At</th>
+					<th>Updated At</th>
+					<th>Actions</th>
+				</tr>
+
+			<form action="/index" method="GET">
+				{% csrf_token %}
+				{% for row in query %}
+				<tr>
+					<td>{{row.id}}</td>
+					<td><a href="/users/{{row.id}}">{{row.name}}</a></td>
+					<td>{{row.email}}</td>
+					<td>{{row.created_at}}</td>
+					<td>{{row.updated_at}}</td>
+					<td><a href="/users/{{row.id}}">Show</a><a href="/users/{{row.id}}/edit">Edit</a><a href="/users/{{row.id}}/destroy">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</form>
+		</table>
+
+		<div>
+			<a href="new">Add a New User</a>
+		</div>
+
+
+
+
+	</div>
+</body>
+</html>

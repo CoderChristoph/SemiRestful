@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Users Table</title>
+    <meta name="description" content="Contains Users Table">
+    <meta name="Chris" content="Index">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'RestfulUsers/css/mainStyleSheet.css' %}">
+
+</head>
+
+<body>
+
+    <div>
+        {% for row in query %}
+        <h1>User {{row.id}}</h1>
+        <p>Full Name: {{row.name}}</p>
+        <p>Email: {{row.email}}</p>
+        <p>Created At: {{row.created_at}}</p>
+        <a href="/users/{{row.id}}/edit">Edit</a> | <a href="/users/{{row.id}}/destroy">Delete</a> | <a href="/users/">Home</a>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>

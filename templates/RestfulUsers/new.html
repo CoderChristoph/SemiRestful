@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Users Table</title>
+    <meta name="description" content="Contains Users Table">
+    <meta name="Chris" content="Index">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'RestfulUsers/css/mainStyleSheet.css' %}">
+
+</head>
+
+<body>
+
+    <form action="/users/create" method="POST">
+    {% csrf_token %}
+
+    <label for="first_name">First Name: </label>
+    <input type="text" id="fName" name="fName" placeholder="Your First Name">
+
+    <label for="last_name">Last Name: </label>
+    <input type="text" id="lName" name="lName" placeholder="Your Last Name">
+
+    <label for="email">Email: </label>
+    <input type="email" id="email" name="email" placeholder="Your email Name">
+
+    <input type="submit" id="createUser" name="submit" value="Create">
+
+    </form>
+    <a href="/users/">Go Back</a>
+
+</body>
+</html>

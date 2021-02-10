@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Users Table</title>
+    <meta name="description" content="Contains Users Table">
+    <meta name="Chris" content="Index">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'RestfulUsers/css/mainStyleSheet.css' %}">
+
+</head>
+
+<body>
+    <div>
+        {% for row in query %}
+        <h1>Edit User: {{row.id}}</h1>
+
+        <form action="users/update" method="POST">
+            {% csrf_token %}
+
+            <label for="name">Name: </label>
+            <input type="text" name="fName" value="{{row.name}}">
+
+            <label for="email">Email: </label>
+            <input type="email" name="email" value="{{row.email}}">
+            <input type="hidden" id="id" name="id" value="{{row.id}}">
+
+            <input type="submit" name="submit" value="Update">
+        </form>
+
+        <a href="/users/{{row.id}}">Show</a> | <a href="/users">Home</a>
+        {% endfor %}
+    
+    </div>
+    
+
+</body>
+</html>
